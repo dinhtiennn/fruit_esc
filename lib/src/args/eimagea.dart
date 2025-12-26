@@ -6,6 +6,7 @@ import 'package:psdk_fruit_esc/psdk_fruit_esc.dart';
 import 'package:psdk_imageb/psdk_imageb.dart';
 
 import 'basic_esc_arg.dart';
+import 'image_utils.dart';
 ///QR-285A特殊的压缩指令采用这个
 class EImageA extends BasicESCArg<EImageA> {
   late Uint8List _image;
@@ -35,14 +36,48 @@ class EImageA extends BasicESCArg<EImageA> {
 
   @override
   CommandClause clause() {
-    var processer = Pbita(
-      command: 'esc',
-      threshold: _threshold,
-      compress: _compress,
-      reverse: _reverse,
-    );
-    var info = processer.processWithBytes(Uint8List.fromList(_image));
-    var fimage = info.result;
+    ProcessedImage? runWithThreshold(int? t) {
+      final processer = Pbita(
+        command: 'esc',
+        threshold: t,
+        compress: _compress,
+        reverse: _reverse,
+      );
+      final info = processer.processWithBytes(Uint8List.fromList(_image));
+      return info.result;
+    }
+
+    ProcessedImage? fimage = runWithThreshold(_threshold);
+    if (!_compress && fimage != null) {
+      final r0 = estimateBlackRatio(fimage.data, fimage.width, fimage.height);
+      if (r0 < 0.001) {
+        final base = _threshold ?? 190;
+        final t1 = (base + 40).clamp(0, 255);
+        final t2 = (base + 80).clamp(0, 255);
+
+        final cand1 = runWithThreshold(t1);
+        final cand2 = runWithThreshold(t2);
+
+        ProcessedImage best = fimage;
+        var bestRatio = r0;
+
+        if (cand1 != null) {
+          final r1 = estimateBlackRatio(cand1.data, cand1.width, cand1.height);
+          if (r1 > bestRatio) {
+            best = cand1;
+            bestRatio = r1;
+          }
+        }
+        if (cand2 != null) {
+          final r2 = estimateBlackRatio(cand2.data, cand2.width, cand2.height);
+          if (r2 > bestRatio) {
+            best = cand2;
+          }
+        }
+        fimage = best;
+      }
+    }
+
     if (fimage == null) {
       throw Exception('Wrong image data');
     }
