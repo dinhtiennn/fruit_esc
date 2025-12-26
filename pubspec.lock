@@ -89,6 +89,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.7"
+  device_adapter:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: a82f10974f45a04428b36f250696494d2eef199d
+      url: "https://github.com/dinhtiennn/device_adapter.git"
+    source: git
+    version: "0.1.4"
   enough_convert:
     dependency: transitive
     description:
@@ -258,7 +267,7 @@ packages:
     source: hosted
     version: "6.0.3"
   psdk_device_adapter:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: psdk_device_adapter
       sha256: fc4e585da4e27f27bf40aa232f72f5aa6df7aa1cc0eeb75f81836ee5bcde542e

@@ -68,6 +68,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "device_adapter",
+      "rootUri": "file:///C:/Users/dinht/AppData/Local/Pub/Cache/git/device_adapter-a82f10974f45a04428b36f250696494d2eef199d/",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "enough_convert",
       "rootUri": "file:///C:/Users/dinht/AppData/Local/Pub/Cache/hosted/pub.dev/enough_convert-1.6.0",
       "packageUri": "lib/",
@@ -362,10 +368,10 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2025-12-22T07:48:42.222561Z",
+  "generated": "2025-12-26T02:04:35.631922Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
-  "flutterRoot": "file:///C:/Users/dinht/fvm/default",
+  "flutterRoot": "file:///C:/Users/dinht/fvm/versions/3.29.2",
   "flutterVersion": "3.29.2",
   "pubCache": "file:///C:/Users/dinht/AppData/Local/Pub/Cache"
 }
