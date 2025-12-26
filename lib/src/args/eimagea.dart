@@ -2,11 +2,11 @@ import 'dart:typed_data';
 
 import 'package:psdk_frame_father/father/command/print/command_clause.dart';
 import 'package:psdk_frame_father/father/command/single/binary_command.dart';
-import 'package:psdk_fruit_esc/psdk_fruit_esc.dart';
 import 'package:psdk_imageb/psdk_imageb.dart';
 
 import 'basic_esc_arg.dart';
 import 'image_utils.dart';
+import '../mark/mode.dart';
 ///QR-285A特殊的压缩指令采用这个
 class EImageA extends BasicESCArg<EImageA> {
   late Uint8List _image;
