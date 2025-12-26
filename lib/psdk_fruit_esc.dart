@@ -14,6 +14,7 @@ export 'src/args/ebttype.dart';
 export 'src/args/egetshutdowntime.dart';
 export 'src/args/eimage.dart';
 export 'src/args/eimagea.dart';
+export 'src/args/eimage_raster.dart';
 export 'src/args/elearnlabelgap.dart';
 export 'src/args/eline.dart';
 export 'src/args/elinedot.dart';
